@@ -1,0 +1,8 @@
+{
+  "name": "Rentora",
+  "description": "Production-oriented rental marketplace for short-term stays and long-term leases",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

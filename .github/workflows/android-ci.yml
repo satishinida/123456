@@ -32,7 +32,17 @@ jobs:
         with:
           gradle-version: '9.3.1'
       - name: Build and test debug APK
-        run: gradle :app:assembleDebug :app:testDebugUnitTest --stacktrace
+        shell: bash
+        run: |
+          # This repository currently does not commit the Gradle wrapper scripts.
+          # Use the wrapper if it exists; otherwise use Gradle installed by setup-gradle.
+          if [ -f ./gradlew ]; then
+            chmod +x ./gradlew
+            ./gradlew :app:assembleDebug :app:testDebugUnitTest --stacktrace
+          else
+            echo "gradlew not found; using the Gradle 9.3.1 installation from setup-gradle."
+            gradle :app:assembleDebug :app:testDebugUnitTest --stacktrace
+          fi
       - name: Upload debug APK
         if: success()
         uses: actions/upload-artifact@v4

@@ -9,7 +9,8 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
-@Config(sdk = [36])
+// Robolectric in this project does not yet support API 36; use the latest supported SDK.
+@Config(sdk = [35])
 class ExampleRobolectricTest {
 
   @Test
